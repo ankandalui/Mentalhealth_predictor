@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request # type: ignore
 import joblib # type: ignore
 import numpy as np # type: ignore
@@ -5,7 +6,8 @@ import numpy as np # type: ignore
 app = Flask(__name__)
 
 # Load the trained machine learning model
-model = model = joblib.load("model/mental_health_model.pkl")
+model_path = os.path.join(os.path.dirname(__file__), "model", "mental_health_model.pkl")
+model = joblib.load(model_path)
 @app.route("/")
 def home():
     # Render the home page template
@@ -156,5 +158,5 @@ def predict():
     # Return the prediction result to the user
     return render_template("result.html", prediction=prediction[0])
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# if __name__ == "__main__":
+#     app.run(debug=True)
