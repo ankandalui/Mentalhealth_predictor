@@ -7,3 +7,4 @@ Make sure you have Python installed, then run:
 Final step, Run: 
 
 # python app.py
+# Mentalhealth_predictor
